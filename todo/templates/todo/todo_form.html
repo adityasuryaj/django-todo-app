@@ -1,0 +1,32 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <strong>Edit Todo</strong>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Judul</label>
+                        {{ form.title }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Deskripsi</label>
+                        {{ form.description }}
+                    </div>
+                    <div class="form-check mb-3">
+                        {{ form.is_completed }}
+                        <label class="form-check-label ms-1">Sudah selesai?</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a href="{% url 'todo_list' %}" class="btn btn-secondary">Batal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
